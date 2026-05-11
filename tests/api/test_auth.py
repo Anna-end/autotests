@@ -33,10 +33,8 @@ class TestLogin:
 
     def test_invalid_password(self, users, test_user):
         response = users.verify_login(test_user.email, "WRONG_PASSWORD")
-        print(response.json())
         UsersAssertions.assert_invalid_password(response)
 
     def test_login_without_email(self, users, test_user):
         response = users.verify_login_without_email(test_user.password)
-        print(response.json())
         UsersAssertions.assert_login_without_email(response)
